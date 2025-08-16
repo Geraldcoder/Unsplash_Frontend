@@ -42,7 +42,7 @@ const ProfilePage = () => {
 					{canvas.map((item) => {
 						const { _id, description, imageUrl } = item
 						return (
-							<div className='mb-3 parent'>
+							<div className='mb-3 parent' key={_id}>
 								<div className='overlay'>
 									<button
 										className='absolute self-center p-3'
@@ -76,7 +76,7 @@ const ProfilePage = () => {
 									</button>
 								</div>
 
-								<div className='mb-3 parent' key={_id}>
+								<div className='mb-3 parent'>
 									<img src={imageUrl} alt={description} />
 								</div>
 							</div>

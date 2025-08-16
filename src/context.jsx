@@ -35,7 +35,7 @@ const AppProvider = ({ children }) => {
 		password: '',
 	})
 
-	const url = 'http://localhost:300/api/v1/pictures'
+	const url = 'https://unsplash-backend-8d3r.onrender.com/api/v1/pictures'
 
 	useEffect(() => {
 		try {
@@ -73,7 +73,8 @@ const AppProvider = ({ children }) => {
 	const handleChangeRegister = (e) => {
 		setRegisterInfo({ ...registerInfo, [e.target.name]: e.target.value })
 	}
-	const urlLogin = 'http://localhost:300/api/v1/auth/login'
+	const urlLogin =
+		'https://unsplash-backend-8d3r.onrender.com/api/v1/auth/login'
 
 	const handleLogin = async (e) => {
 		e.preventDefault()
@@ -98,7 +99,8 @@ const AppProvider = ({ children }) => {
 		}
 	}
 
-	const registerUrl = 'http://localhost:300/api/v1/auth/register'
+	const registerUrl =
+		'https://unsplash-backend-8d3r.onrender.com/api/v1/auth/register'
 
 	const handleRegister = async (e) => {
 		e.preventDefault()
@@ -133,7 +135,7 @@ const AppProvider = ({ children }) => {
 		setLoadedImages((prev) => ({ ...prev, [id]: true }))
 	}
 
-	const likeUrl = 'http://localhost:300/api/v1/pictures'
+	const likeUrl = 'https://unsplash-backend-8d3r.onrender.com/api/v1/pictures'
 
 	const likePicture = async (item) => {
 		try {
@@ -166,12 +168,15 @@ const AppProvider = ({ children }) => {
 
 	const disLikePicture = async (id) => {
 		try {
-			const res = await fetch(`http://localhost:300/api/v1/pictures/${id}`, {
-				method: 'DELETE',
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
+			const res = await fetch(
+				`https://unsplash-backend-8d3r.onrender.com/api/v1/pictures/${id}`,
+				{
+					method: 'DELETE',
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			)
 
 			let data
 			try {
@@ -200,7 +205,6 @@ const AppProvider = ({ children }) => {
 		)
 		const data = await response.json()
 		const { results, total_pages } = data
-		// console.log(results)
 
 		const formattedResults = results.map((item) => ({
 			id: item.id,
@@ -247,7 +251,6 @@ const AppProvider = ({ children }) => {
 				try {
 					const decoded = jwtDecode(token)
 					setUser(decoded)
-					console.log(decoded)
 				} catch (err) {
 					console.error('Invalid token', err)
 				}
